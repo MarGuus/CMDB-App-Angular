@@ -1,1 +1,21 @@
-<app-ci-item></app-ci-item>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success">New</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <a href="#" class="list-group-item clearfix" 
+        *ngFor="let ci of CIs">
+            <div class="pull-left">
+                <h4 class="list-group-item-heading">{{ci.name}}</h4>
+                <p class="list-group-item-text">{{ci.description}}</p>
+            </div>
+            <span class="pull-right">
+                <img [src]="ci.imagePath" alt="{{ci.name}}" class="img-responsive" style="max-height: 50px;">
+            </span>
+        </a>
+        <app-ci-item></app-ci-item>
+    </div>
+</div>
