@@ -1,8 +1,16 @@
 <div class="row">
     <div class="col-md-5">
-        <app-ci-list></app-ci-list>
+        <app-ci-list
+        (listCiSelected)="selectedCi = $event"
+        ></app-ci-list>
     </div>
     <div class="col-md-7">
-        <app-ci-detail></app-ci-detail>
+        <app-ci-detail
+        *ngIf="selectedCi; else infoText"
+        [ci]="selectedCi"
+        ></app-ci-detail>
+        <ng-template #infoText>
+            <p>Please select a Ci</p>
+        </ng-template>
     </div>
 </div>

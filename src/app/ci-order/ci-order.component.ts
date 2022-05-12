@@ -16,4 +16,8 @@ export class CiOrderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onPartAdded(part:Part){
+    this.parts.push(part);
+  }
+
 }

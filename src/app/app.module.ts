@@ -9,6 +9,8 @@ import { CiDetailComponent } from './ci-main/ci-detail/ci-detail.component';
 import { CiItemComponent } from './ci-main/ci-list/ci-item/ci-item.component';
 import { CiOrderComponent } from './ci-order/ci-order.component';
 import { OrderEditComponent } from './ci-order/order-edit/order-edit.component';
+import { FormsModule } from '@angular/forms';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import { OrderEditComponent } from './ci-order/order-edit/order-edit.component';
     CiDetailComponent,
     CiItemComponent,
     CiOrderComponent,
-    OrderEditComponent
+    OrderEditComponent,
+    DropdownDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

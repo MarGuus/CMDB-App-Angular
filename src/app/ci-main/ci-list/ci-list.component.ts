@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Ci } from '../ci.model';
 
 @Component({
@@ -7,6 +7,7 @@ import { Ci } from '../ci.model';
   styleUrls: ['./ci-list.component.css']
 })
 export class CiListComponent implements OnInit {
+  @Output() listCiSelected = new EventEmitter<Ci>();
   CIs:Ci[] = [
     new Ci('A test computer','this is a test', 'https://freesvg.org/img/1545450625.png'),
     new Ci('Another test computer','this is a test', 'https://freesvg.org/img/1545450625.png')
@@ -15,6 +16,10 @@ export class CiListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onCiSelected(ci:Ci){
+    this.listCiSelected.emit(ci);
   }
 
 }

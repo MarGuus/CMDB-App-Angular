@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CMDB-App';
+  loadedFeature = 'devicelist';
+
+
+
+  onNavigate(feature : string){
+    this.loadedFeature = feature;
+  }
 }

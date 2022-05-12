@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Ci } from './ci.model';
 
 @Component({
   selector: 'app-ci-main',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ci-main.component.css']
 })
 export class CiMainComponent implements OnInit {
+  selectedCi: Ci;
 
   constructor() { }
 

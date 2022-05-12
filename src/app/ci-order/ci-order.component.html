@@ -1,6 +1,8 @@
 <div class="row">
     <div class="col-xs-10">
-        <app-order-edit></app-order-edit>
+        <app-order-edit
+        (partAdded)="onPartAdded($event)"
+        ></app-order-edit>
         <hr>
         <ul class="list-group">
             <a class="list-group-item" 
