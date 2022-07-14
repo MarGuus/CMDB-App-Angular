@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Ci } from '../../ci.model';
+import { CiService } from '../../ci.service';
 
 @Component({
   selector: 'app-ci-item',
@@ -8,14 +9,14 @@ import { Ci } from '../../ci.model';
 })
 export class CiItemComponent implements OnInit {
   @Input() ci : Ci;
-  @Output() ciSelected = new EventEmitter<void>();
-  constructor() { }
+  //@Output() ciSelected = new EventEmitter<void>();
+  constructor(private ciService: CiService) { }
 
   ngOnInit(): void {
   }
 
   onSelect(){
-    this.ciSelected.emit();
+    this.ciService.ciSelected.emit(this.ci);
   }
 
 }

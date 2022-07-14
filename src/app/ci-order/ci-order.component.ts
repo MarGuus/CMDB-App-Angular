@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Part } from '../shared/component.model';
+import { Part } from '../shared/part.model';
+import { CiOrderService } from './ci-order.service';
 
 @Component({
   selector: 'app-ci-order',
@@ -7,17 +8,18 @@ import { Part } from '../shared/component.model';
   styleUrls: ['./ci-order.component.css']
 })
 export class CiOrderComponent implements OnInit {
-  parts:Part[] = [
-    new Part('Kingston Ram 8GB',2),
-    new Part('Asus motherboard',1)
-  ]; 
-  constructor() { }
+  parts:Part[];
+
+  constructor(private ciOrderService : CiOrderService) { }
 
   ngOnInit(): void {
+    this.parts = this.ciOrderService.getParts();
+    this.ciOrderService.partsChanged.subscribe(
+      (parts:Part[]) => {
+        this.parts = parts;
+      }
+    );
   }
 
-  onPartAdded(part:Part){
-    this.parts.push(part);
-  }
 
 }

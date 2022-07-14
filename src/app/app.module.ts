@@ -11,6 +11,7 @@ import { CiOrderComponent } from './ci-order/ci-order.component';
 import { OrderEditComponent } from './ci-order/order-edit/order-edit.component';
 import { FormsModule } from '@angular/forms';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { CiOrderService } from './ci-order/ci-order.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CiOrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
