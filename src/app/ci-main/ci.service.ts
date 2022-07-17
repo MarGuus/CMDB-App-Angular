@@ -32,6 +32,9 @@ export class CiService {
           //return a new array and not a reference by calling slice
           return this.CIs.slice();
       }
+      getCi(index:number){
+        return this.CIs[index];
+      }
 
       addPartsToOrder(parts : Part[]){
         this.orderService.addParts(parts);

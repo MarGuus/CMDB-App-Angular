@@ -12,6 +12,9 @@ import { OrderEditComponent } from './ci-order/order-edit/order-edit.component';
 import { FormsModule } from '@angular/forms';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { CiOrderService } from './ci-order/ci-order.service';
+import { AppRoutingModule } from './app-routing.module';
+import { CiStartComponent } from './ci-main/ci-start/ci-start.component';
+import { CiEditComponent } from './ci-main/ci-edit/ci-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +26,14 @@ import { CiOrderService } from './ci-order/ci-order.service';
     CiItemComponent,
     CiOrderComponent,
     OrderEditComponent,
-    DropdownDirective
+    DropdownDirective,
+    CiStartComponent,
+    CiEditComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [CiOrderService],
   bootstrap: [AppComponent]

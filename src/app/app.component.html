@@ -3,8 +3,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-ci-main *ngIf="loadedFeature === 'devicelist'"></app-ci-main>
-      <app-ci-order *ngIf="loadedFeature === 'deviceorder'"></app-ci-order>
+      <!-- <app-ci-main *ngIf="loadedFeature === 'devicelist'"></app-ci-main>
+      <app-ci-order *ngIf="loadedFeature === 'deviceorder'"></app-ci-order> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

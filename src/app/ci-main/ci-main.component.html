@@ -3,12 +3,6 @@
         <app-ci-list></app-ci-list>
     </div>
     <div class="col-md-7">
-        <app-ci-detail
-        *ngIf="selectedCi; else infoText"
-        [ci]="selectedCi"
-        ></app-ci-detail>
-        <ng-template #infoText>
-            <p>Please select a Ci</p>
-        </ng-template>
+     <router-outlet></router-outlet>
     </div>
 </div>

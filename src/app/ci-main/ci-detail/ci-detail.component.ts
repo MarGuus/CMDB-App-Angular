@@ -1,4 +1,5 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Ci } from '../ci.model';
 import { CiService } from '../ci.service';
 
@@ -8,11 +9,19 @@ import { CiService } from '../ci.service';
   styleUrls: ['./ci-detail.component.css']
 })
 export class CiDetailComponent implements OnInit {
-  @Input() ci: Ci
+  ci: Ci;
+  id :number;
 
-  constructor(private ciService : CiService) { }
+  constructor(private ciService : CiService,
+    private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params:Params)=>{
+        this.id = parseInt(params['id']);
+        this.ci = this.ciService.getCi(this.id);
+      }
+    )
   }
 
   onAddToOrder(){

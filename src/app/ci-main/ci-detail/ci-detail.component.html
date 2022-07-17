@@ -22,8 +22,8 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a style="cursor:pointer" (click)="onAddToOrder()">Order Componets</a></li>
-                <li><a href="#">Edit CI</a></li>
-                <li><a href="#">Delete CI</a></li>
+                <li><a [routerLink]="['edit']" style="cursor:pointer">Edit CI</a></li>
+                <li><a style="cursor:pointer">Delete CI</a></li>
             </ul>
         </div>
     </div>

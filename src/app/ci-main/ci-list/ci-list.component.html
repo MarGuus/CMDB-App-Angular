@@ -1,15 +1,14 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-success">New</button>
+        <button class="btn btn-success" (click)="onNewCi()">New</button>
     </div>
 </div>
 <hr>
 <div class="row">
     <div class="col-xs-12">
        
-        <app-ci-item *ngFor="let ciElement of CIs"
-        [ci]="ciElement"
-        >
+        <app-ci-item *ngFor="let ciElement of CIs;index as i"
+        [ci]="ciElement" [index]="i">
     </app-ci-item>
     </div>
 </div>
