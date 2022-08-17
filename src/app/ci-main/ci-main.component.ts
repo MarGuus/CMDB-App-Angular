@@ -14,11 +14,6 @@ export class CiMainComponent implements OnInit {
   constructor(private ciService : CiService) { }
 
   ngOnInit(): void {
-    this.ciService.ciSelected.subscribe(
-      (ci:Ci) => {
-        this.selectedCi = ci;
-      }
-    )
   }
 
 }

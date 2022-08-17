@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Part } from '../shared/part.model';
 import { CiOrderService } from './ci-order.service';
 
@@ -7,18 +8,23 @@ import { CiOrderService } from './ci-order.service';
   templateUrl: './ci-order.component.html',
   styleUrls: ['./ci-order.component.css']
 })
-export class CiOrderComponent implements OnInit {
+export class CiOrderComponent implements OnInit,OnDestroy {
   parts:Part[];
+  private igChangeSub: Subscription;
 
   constructor(private ciOrderService : CiOrderService) { }
 
   ngOnInit(): void {
     this.parts = this.ciOrderService.getParts();
-    this.ciOrderService.partsChanged.subscribe(
+    this.igChangeSub = this.ciOrderService.partsChanged.subscribe(
       (parts:Part[]) => {
         this.parts = parts;
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    this.igChangeSub.unsubscribe();
   }
 
 

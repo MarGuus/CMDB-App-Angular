@@ -1,11 +1,11 @@
 import { EventEmitter, Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import { CiOrderService } from "../ci-order/ci-order.service";
 import { Part } from "../shared/part.model";
 import { Ci } from "./ci.model";
 
 @Injectable()
 export class CiService {
-    ciSelected = new EventEmitter<Ci>();
 
     constructor(private orderService : CiOrderService){}
 
