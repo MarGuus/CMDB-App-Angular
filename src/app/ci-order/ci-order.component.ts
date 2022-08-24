@@ -23,6 +23,11 @@ export class CiOrderComponent implements OnInit,OnDestroy {
     );
   }
 
+  onEditItem(index : number){
+    this.ciOrderService.startedEditing.next(index);
+  }
+
+
   ngOnDestroy(): void {
     this.igChangeSub.unsubscribe();
   }
