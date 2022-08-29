@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
+import {
+  FormArray,
+  FormControl,
+  FormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CiService } from '../ci.service';
 
@@ -45,8 +51,12 @@ export class CiEditComponent implements OnInit {
         for (let part of ci.parts) {
           partsArr.push(
             new FormGroup({
-              name: new FormControl(part.name),
-              amount: new FormControl(part.amount),
+              name: new FormControl(part.name, Validators.required),
+              amount: new FormControl(part.amount, [
+                Validators.required,
+                Validators.pattern(/^[1-9]+[0-9]*$/),
+                Validators.min(1),
+              ]),
             })
           );
         }
@@ -54,13 +64,27 @@ export class CiEditComponent implements OnInit {
     }
 
     this.ciForm = new FormGroup({
-      name: new FormControl(ciName),
-      imagePath: new FormControl(ciImagePath),
-      description: new FormControl(ciDesc),
+      name: new FormControl(ciName, Validators.required),
+      imagePath: new FormControl(ciImagePath, Validators.required),
+      description: new FormControl(ciDesc, Validators.required),
       parts: partsArr,
     });
 
     console.log(this.ciForm);
+  }
+
+  //add a part to parts array
+  onAddPart() {
+    (<FormArray>this.ciForm.get('parts')).push(
+      new FormGroup({
+        name: new FormControl(null, Validators.required),
+        amount: new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[1-9]+[0-9]*$/),
+          Validators.min(1),
+        ]),
+      })
+    );
   }
 
   onSubmit() {

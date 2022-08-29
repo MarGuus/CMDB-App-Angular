@@ -3,7 +3,13 @@
     <form [formGroup]="ciForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-success">Save</button>
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="ciForm.invalid"
+          >
+            Save
+          </button>
           <button type="button" class="btn btn-danger">Cancel</button>
         </div>
       </div>
@@ -53,6 +59,7 @@
             class="row"
             *ngFor="let partCtrl of getControls(); let i = index"
             [formGroupName]="i"
+            style="margin-top: 10px"
           >
             <div class="col-xs-8">
               <input type="text" class="form-control" formControlName="name" />
@@ -66,6 +73,18 @@
             </div>
             <div class="col-xs-2">
               <button class="btn btn-danger">X</button>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-xs-12">
+              <button
+                class="btn btn-success"
+                type="button"
+                (click)="onAddPart()"
+              >
+                Add Part
+              </button>
             </div>
           </div>
         </div>
