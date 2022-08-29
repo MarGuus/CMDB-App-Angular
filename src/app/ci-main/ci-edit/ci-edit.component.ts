@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Ci } from '../ci.model';
 import { CiService } from '../ci.service';
 
 @Component({
@@ -69,8 +70,6 @@ export class CiEditComponent implements OnInit {
       description: new FormControl(ciDesc, Validators.required),
       parts: partsArr,
     });
-
-    console.log(this.ciForm);
   }
 
   //add a part to parts array
@@ -88,6 +87,16 @@ export class CiEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.ciForm);
+    // const newCi = new Ci(
+    //   this.ciForm.value['name'],
+    //   this.ciForm.value['description'],
+    //   this.ciForm.value['imagePath'],
+    //   this.ciForm.value['parts']
+    // );
+    if (this.editMode) {
+      this.ciService.updateCi(this.id, this.ciForm.value);
+    } else {
+      this.ciService.addCi(this.ciForm.value);
+    }
   }
 }
