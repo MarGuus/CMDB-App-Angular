@@ -9,7 +9,7 @@ import { CiDetailComponent } from './ci-main/ci-detail/ci-detail.component';
 import { CiItemComponent } from './ci-main/ci-list/ci-item/ci-item.component';
 import { CiOrderComponent } from './ci-order/ci-order.component';
 import { OrderEditComponent } from './ci-order/order-edit/order-edit.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { CiOrderService } from './ci-order/ci-order.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,14 +28,10 @@ import { CiEditComponent } from './ci-main/ci-edit/ci-edit.component';
     OrderEditComponent,
     DropdownDirective,
     CiStartComponent,
-    CiEditComponent
+    CiEditComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [CiOrderService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
