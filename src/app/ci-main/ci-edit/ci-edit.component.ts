@@ -6,8 +6,7 @@ import {
   NgForm,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Ci } from '../ci.model';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CiService } from '../ci.service';
 
 @Component({
@@ -20,7 +19,11 @@ export class CiEditComponent implements OnInit {
   editMode: boolean = false;
   ciForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private ciService: CiService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private ciService: CiService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -86,6 +89,10 @@ export class CiEditComponent implements OnInit {
     );
   }
 
+  onCancel() {
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
   onSubmit() {
     // const newCi = new Ci(
     //   this.ciForm.value['name'],
@@ -98,5 +105,6 @@ export class CiEditComponent implements OnInit {
     } else {
       this.ciService.addCi(this.ciForm.value);
     }
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

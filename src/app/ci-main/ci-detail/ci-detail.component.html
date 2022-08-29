@@ -1,47 +1,49 @@
 <div class="row">
-    <div class="col-xs-12">
-        <img 
-        [src]="ci.imagePath" 
-        [alt]="ci.imagePath" 
-        class="img-responsive"
-        style="max-height: 300px"
-        >
-    </div>
+  <div class="col-xs-12">
+    <img
+      [src]="ci.imagePath"
+      [alt]="ci.imagePath"
+      class="img-responsive"
+      style="max-height: 300px"
+    />
+  </div>
 </div>
 <div class="row">
-    <div class="col-xs-12">
-       <h1>{{ci.name}}</h1> 
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12">
-        <div class="btn-group" appDropdown>
-            <button type="button" class="btn btn-primary dropdown-toggle">
-                Manage CI <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a style="cursor:pointer" (click)="onAddToOrder()">Order Componets</a></li>
-                <li><a [routerLink]="['edit']" style="cursor:pointer">Edit CI</a></li>
-                <li><a style="cursor:pointer">Delete CI</a></li>
-            </ul>
-        </div>
-    </div>
+  <div class="col-xs-12">
+    <h1>{{ ci.name }}</h1>
+  </div>
 </div>
 
 <div class="row">
-   <div class="col-xs-12">
-       {{ci.description}}
-   </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <ul class="list-group">
-            <li 
-            class="list-group-item"
-            *ngFor="let part of ci.parts">
-            {{part.name}} - {{part.amount}}
+  <div class="col-xs-12">
+    <div class="btn-group" appDropdown>
+      <button type="button" class="btn btn-primary dropdown-toggle">
+        Manage CI <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a style="cursor: pointer" (click)="onAddToOrder()"
+            >Order Componets</a
+          >
         </li>
-        </ul>
+        <li><a [routerLink]="['edit']" style="cursor: pointer">Edit CI</a></li>
+        <li><a style="cursor: pointer" (click)="onDeleteCi()">Delete CI</a></li>
+      </ul>
     </div>
- </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    {{ ci.description }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let part of ci.parts">
+        {{ part.name }} - {{ part.amount }}
+      </li>
+    </ul>
+  </div>
+</div>

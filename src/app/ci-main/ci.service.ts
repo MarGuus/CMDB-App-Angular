@@ -47,4 +47,9 @@ export class CiService {
     this.CIs[index] = newCi;
     this.ciChanged.next(this.CIs.slice());
   }
+
+  deleteCi(index: number) {
+    this.CIs.splice(index, 1);
+    this.ciChanged.next(this.CIs.slice());
+  }
 }
