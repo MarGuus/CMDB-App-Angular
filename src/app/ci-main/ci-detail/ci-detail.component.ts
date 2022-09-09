@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Ci } from '../ci.model';
 import { CiService } from '../ci.service';
 
@@ -12,7 +12,11 @@ export class CiDetailComponent implements OnInit {
   ci: Ci;
   id: number;
 
-  constructor(private ciService: CiService, private route: ActivatedRoute) {}
+  constructor(
+    private ciService: CiService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -27,5 +31,6 @@ export class CiDetailComponent implements OnInit {
 
   onDeleteCi() {
     this.ciService.deleteCi(this.id);
+    this.router.navigate(['/cis']);
   }
 }

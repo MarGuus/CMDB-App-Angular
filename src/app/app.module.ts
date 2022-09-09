@@ -15,6 +15,7 @@ import { CiOrderService } from './ci-order/ci-order.service';
 import { AppRoutingModule } from './app-routing.module';
 import { CiStartComponent } from './ci-main/ci-start/ci-start.component';
 import { CiEditComponent } from './ci-main/ci-edit/ci-edit.component';
+import { CiService } from './ci-main/ci.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { CiEditComponent } from './ci-main/ci-edit/ci-edit.component';
     CiEditComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
-  providers: [CiOrderService],
+  providers: [CiOrderService, CiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -89,6 +89,10 @@ export class CiEditComponent implements OnInit {
     );
   }
 
+  onDelete(index: number) {
+    (<FormArray>this.ciForm.get('parts')).removeAt(index);
+  }
+
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
