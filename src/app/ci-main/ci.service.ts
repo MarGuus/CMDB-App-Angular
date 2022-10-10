@@ -10,21 +10,28 @@ export class CiService {
 
   constructor(private orderService: CiOrderService) {}
 
-  private CIs: Ci[] = [
-    new Ci(
-      'A test computer',
-      'this is a test',
-      'https://freesvg.org/img/1545450625.png',
-      [new Part('Pirkka motherboard', 1), new Part('processor: intel i5', 1)]
-    ),
+  // private CIs: Ci[] = [
+  //   new Ci(
+  //     'A test computer',
+  //     'this is a test',
+  //     'https://freesvg.org/img/1545450625.png',
+  //     [new Part('Pirkka motherboard', 1), new Part('processor: intel i5', 1)]
+  //   ),
 
-    new Ci(
-      'Another test computer',
-      'this is a test',
-      'https://freesvg.org/img/1545450625.png',
-      [new Part('Pirkka motheboard', 1), new Part('processor: intel i7', 1)]
-    ),
-  ];
+  //   new Ci(
+  //     'Another test computer',
+  //     'this is a test',
+  //     'https://freesvg.org/img/1545450625.png',
+  //     [new Part('Pirkka motheboard', 1), new Part('processor: intel i7', 1)]
+  //   ),
+  // ];
+
+  private CIs: Ci[] = [];
+
+  setCis(cis: Ci[]) {
+    this.CIs = cis;
+    this.ciChanged.next(this.CIs.slice());
+  }
 
   getCis() {
     //return a new array and not a reference by calling slice

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CiStartComponent } from './ci-main/ci-start/ci-start.component';
 import { CiEditComponent } from './ci-main/ci-edit/ci-edit.component';
 import { CiService } from './ci-main/ci.service';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinner } from './shared/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +33,16 @@ import { CiService } from './ci-main/ci.service';
     DropdownDirective,
     CiStartComponent,
     CiEditComponent,
+    AuthComponent,
+    LoadingSpinner,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+  ],
   providers: [CiOrderService, CiService],
   bootstrap: [AppComponent],
 })
